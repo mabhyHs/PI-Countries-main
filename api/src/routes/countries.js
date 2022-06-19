@@ -26,11 +26,10 @@ const addCountriesDB = async () => {
 };
 
 countries.get('/', async (req, res) => {
-  const all = await Country.findAll({ include: Activity })
+  const allCountries = await Country.findAll({ include: Activity })
 
   if (req.query.name) {
     let { name } = req.query
-    name = name[0].toUpperCase() + name.slice(1).toLowerCase()
     const found = await Country.findAll({
       where: { name: { [Op.substring]: name } },
     })
@@ -38,18 +37,18 @@ countries.get('/', async (req, res) => {
     return res.json(found)
   }
 
-  res.json(all)
+  res.json(allCountries)
 })
 
 countries.get('/:id', async (req, res) => {
-  const one = await Country.findByPk(req.params.id.toUpperCase(), {
+  const countryById = await Country.findByPk(req.params.id.toUpperCase(), {
     include: Activity,
   })
-  if (!one) {
+  if (!countryById) {
     return res.status(404).send('Error: country not found')
   }
-  console.log(one)
-  return res.json(one)
+  console.log(countryById)
+  return res.json(countryById)
 })
 
 module.exports = { addCountriesDB, countries };
