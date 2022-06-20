@@ -1,6 +1,6 @@
 const initialState = {
-    countries: [], //este array se va a ir modificando según los filtros que aplique en el front
-    allCountries: [], //en este array voy a tener siempre TODOS los paises
+    countries: [], 
+    allCountries: [], 
     countryDetail: {},
   }
 
