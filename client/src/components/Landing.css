@@ -1,21 +1,6 @@
 * {
   box-sizing: border-box;
-  color: #49413a;
-  font-family: "Oxygen", sans-serif;
-}
 
-html,
-body {
-  height: 100%;
-}
-body {
-  overflow: hidden;
-  background: linear-gradient(to bottom, #2b2b2b41 0%, #0000005f 100%),
-    url("../img/journey-g88bc601a1_1920.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center;
-  background-size: cover;
 }
 
 @keyframes bolt {
@@ -131,61 +116,6 @@ body {
 .box__face--top {
   transform: rotateX(90deg) translateZ(70px);
 }
-/*Button*/
-button {
-  height: 2.8em;
-  width: 9em;
-  background: transparent;
-  -webkit-animation: jello-horizontal 0.9s both;
-  animation: jello-horizontal 0.9s both;
-  border: 2px solid #e7dcc7;
-  outline: none;
-  color: #e7dcc7;
-  font-size: 17px;
-}
-
-button:hover {
-  background: #5c4b3f;
-  color: #ffffff;
-  animation: squeeze3124 0.9s both;
-}
-
-@keyframes squeeze3124 {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
-  30% {
-    -webkit-transform: scale3d(1.25, 0.75, 1);
-    transform: scale3d(1.25, 0.75, 1);
-  }
-
-  40% {
-    -webkit-transform: scale3d(0.75, 1.25, 1);
-    transform: scale3d(0.75, 1.25, 1);
-  }
-
-  50% {
-    -webkit-transform: scale3d(1.15, 0.85, 1);
-    transform: scale3d(1.15, 0.85, 1);
-  }
-
-  65% {
-    -webkit-transform: scale3d(0.95, 1.05, 1);
-    transform: scale3d(0.95, 1.05, 1);
-  }
-
-  75% {
-    -webkit-transform: scale3d(1.05, 0.95, 1);
-    transform: scale3d(1.05, 0.95, 1);
-  }
-
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}
 
 @media (max-height: 680px) {
   .image_of_logo {
@@ -260,15 +190,6 @@ button:hover {
 }
 
 @media (max-width: 812px) {
-  body{
-    overflow: hidden;
-    background: linear-gradient(to bottom, #2b2b2b41 0%, #0000005f 100%),
-      url("../img/journey-g7037dc8ac_640.jpg");
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center;
-    background-size: cover;
-  }
   .image_of_logo {
     width: 200px;
     height: 200px;
