@@ -1,12 +1,3 @@
-<<<<<<< Updated upstream
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <h1>Henry Countries</h1>
-    </div>
-=======
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/Landing";
@@ -22,7 +13,6 @@ function App() {
         </Switch>
       </div>
     </BrowserRouter>
->>>>>>> Stashed changes
   );
 }
 
