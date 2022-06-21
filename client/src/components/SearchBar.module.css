@@ -23,8 +23,6 @@
   
   .button:hover {
     cursor: pointer;
-    /* background-color: transparent;
-    color: white; */
     background-color: #776c62;
     color: #f3f1ed;
     border: 1px solid #f3f1ed;

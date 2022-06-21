@@ -70,12 +70,16 @@ export function sort(payload) {
 }
 
 export function createActivity(details) {
-  return async function (dispatch) {
-    const newActivity = await axios.post(
-      'http://localhost:3001/activity',
-      details
-    )
-    console.log(newActivity)
-    return newActivity
+  return async (dispatch) => {
+    try {
+      const activity = await axios.post('http://localhost:3001/activities', details)
+      return dispatch({
+        type: 'CREATE_ACTIVITY',
+        payload: activity.data,
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
+
 }
