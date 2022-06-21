@@ -18,19 +18,15 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       difficulty: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
       duration: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        type: DataTypes.STRING,
       },
       season: {
         type: DataTypes.STRING,
-        allowNull: false,
       },
     },
     { timestamp: false }

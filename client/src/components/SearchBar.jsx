@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getCountriesByName } from '../actions'
-import styles from './SearchBar.module.css'
+import styles from './Searchbar.module.css'
 
 export default function Searchbar() {
   const dispatch = useDispatch()
@@ -9,7 +9,7 @@ export default function Searchbar() {
 
   function handleChange(e) {
     e.preventDefault()
-    //mediante el estado local 'value' controlo el formulario
+    //El estado local 'value' controla el formulario
     setValue(e.target.value)
   }
 
@@ -32,7 +32,7 @@ export default function Searchbar() {
         className={styles.button}
         onClick={(e) => handleSubmit(e)}
         type='submit'
-      >
+      ><i class="fa fa-fw fa-search"></i>
         Search
       </button>
     </div>

@@ -11,7 +11,7 @@ const addCountriesDB = async () => {
   let countries = data.map((country) => ({
     id: country.cca3,
     name: country.name.common,
-    flag: country.flags[0],
+    flag: country.flags[1],
     continent: country.region,
     capital: country.capital?.map((e) => e) || ["No tiene capital"],
     subregion: country.subregion,
@@ -19,7 +19,7 @@ const addCountriesDB = async () => {
     population: country.population,
   }));
 
-  countries = Array.from(new Set(countries)).sort();//array limpio usando set
+  countries = Array.from(new Set(countries));//.sort();//array limpio usando set
   console.log(countries);
   const countriesDB = await Country.bulkCreate(countries);
   return countriesDB;
@@ -30,6 +30,8 @@ countries.get('/', async (req, res) => {
 
   if (req.query.name) {
     let { name } = req.query
+    name = name[0].toUpperCase() + name.slice(1).toLowerCase()
+
     const found = await Country.findAll({
       where: { name: { [Op.substring]: name } },
     })
