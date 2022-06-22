@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './Pages.module.css'
+import styles from './Pagination.module.css'
 
-export default function Pages({ amountPerPage, totalAmount, pageNumber }) {
+export default function Pagination({ amountPerPage, totalAmount, pageNumber }) {
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalAmount / amountPerPage); i++) {

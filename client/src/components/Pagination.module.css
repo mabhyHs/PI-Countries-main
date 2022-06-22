@@ -1,0 +1,53 @@
+.numBar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 5vh;
+  position: fixed;
+  bottom: 0;
+  z-index: 0;
+  padding: 0 3vw;
+}
+
+.numBar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #dad4cc;
+  z-index: -1;
+}
+
+.numContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: fit-content;
+  align-items: center;
+}
+.number {
+  color: #e7dcc7;
+  cursor: pointer;
+  background-color: #675f51;
+  border: 1px solid #e7dcc7;
+
+  font-size: 16px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 9px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-decoration: none;
+}
+.number:hover {
+  text-decoration: none;
+  background-color: #e7dcc7;
+  color: #675f51;
+  cursor: pointer;
+  border: 1px solid #675f51;
+
+}

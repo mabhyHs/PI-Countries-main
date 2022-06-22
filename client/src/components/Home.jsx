@@ -10,7 +10,7 @@ import {
 import styles from "./Home.module.css";
 //import { Link } from "react-router-dom";
 import { Country } from "./Country";
-import Pages from "./Pages";
+import Pagination from "./Pagination";
 import Navbar from "./Navbar";
 import Error from "./Error";
 
@@ -73,18 +73,6 @@ export default function Home() {
         actNameFilter={handleActivityFilterByName}
       />
 
-      {/* <div className={styles.btnContainer}>
-        <button className={styles.btn} onClick={(e) => handleClick(e)}>
-          Reload countries
-        </button>
-
-        <button className={styles.btn}>
-          <Link className={styles.link} to="/activity">
-            Add Activity
-          </Link>
-        </button>
-      </div> */}
-
       <div className={styles.countryContainer}>
         {currentCountries.length ? (
           currentCountries.map((c) => (
@@ -101,7 +89,7 @@ export default function Home() {
         )}
       </div>
 
-      <Pages
+      <Pagination
         amountPerPage={countriesPerPage}
         totalAmount={countries.length}
         pageNumber={pages}
