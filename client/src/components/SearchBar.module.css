@@ -3,7 +3,8 @@
     width: 40%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+
   }
   
   .input {
@@ -11,6 +12,8 @@
     width: 60%;
     background-color: #f3f1ed;
     border: 1px solid #f3f1ed;
+    border-top-left-radius: 15px;
+    border-end-start-radius: 15px;
   }
   
   .button {
@@ -18,7 +21,9 @@
     width: 20%;
     background-color: #f3f1ed;
     border: 1px solid #f3f1ed;
-    border-left: 1px solid #776c62;
+    border-end-end-radius: 15px;
+    border-top-right-radius: 15px;
+
   }
   
   .button:hover {

@@ -33,7 +33,6 @@ export default function Searchbar() {
         onClick={(e) => handleSubmit(e)}
         type='submit'
       ><i class="fa fa-fw fa-search"></i>
-        Search
       </button>
     </div>
   )
