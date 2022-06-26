@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getAllCountries } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCountries, getAllActivities } from "../actions";
 import Searchbar from "./Searchbar";
 import { Link } from "react-router-dom";
 import imgNav from "../img/NavBarIcon.png";
@@ -9,11 +9,17 @@ import "./Navbar.css";
 
 export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
   const dispatch = useDispatch();
+  //activities
+  const activities = useSelector((state) => state.allActivities);
 
   function handleClick(e) {
     e.preventDefault();
     dispatch(getAllCountries());
   }
+
+  useEffect(() => {
+    dispatch(getAllActivities());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getAllCountries());
@@ -70,10 +76,16 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
             </li>
 
             <li className="nav-item">
-              <select className="nav-links" onChange={(e) => actNameFilter(e)}>
-                <option value="All">Filter by activity...</option>
-                <option value="Skiing">Skiing</option>
-                <option value="Surfing">Surf</option>
+              <select
+                className="nav-links"
+                name="activities"
+                onChange={(e) => actNameFilter(e)}
+                required
+              >
+                <option value="">Filter by activity...</option>
+                {activities.map((a) => (
+                  <option value={a.name}>{a.name}</option>
+                ))}
               </select>
             </li>
 

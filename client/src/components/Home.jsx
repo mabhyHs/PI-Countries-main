@@ -22,49 +22,52 @@ export default function Home() {
     dispatch(getAllCountries());
   }, [dispatch]);
 
-  const [order, setOrder] = useState("");
-  //uso estados locales para el paginado
-  const [currentPage, setCurrentPage] = useState(1); // empiezo en la pag 1
-  const pages = (pageNum) => {
-    setCurrentPage(pageNum);
+  const [update, setUpdate] = useState("");
+  const [currentPage, setcurrentPage] = useState(1);
+  const countriesPerPage = 10;
+  const lastIndex = currentPage * countriesPerPage; //2 * 10 = 20 **  2 * 10 -1 = 19
+  const firstIndex = lastIndex - countriesPerPage; //20 - 10= 10  ** 20 - 10 -1 = 9
+  //si la pagina actual es 1 muestre los primeros nueve paises, si no muestre los siguientes 10
+  let currentCountries;
+  currentPage === 1
+    ? (currentCountries = countries.slice(0, 9))
+    : (currentCountries = countries.slice(firstIndex - 1, lastIndex - 1)); //slice(9, 19) = 9, 10, 11,...18
+
+  const pagination = (pageNumber) => {
+    setcurrentPage(pageNumber);
   };
-  const countriesPerPage = 9;
+
+  //al cambiar el contenido del arreglo countries se establezca que inicie en la primer pagina
+  useEffect(() => {
+    setcurrentPage(1);
+  }, [countries]);
 
   //filtro por continente
   function handleContinentFilter(e) {
     dispatch(filterByContinent(e.target.value));
+    setUpdate(e.target.value);
   }
 
   //filtro por actividad
   function handleActivityFilter(e) {
     dispatch(filterByActivity(e.target.value));
+    setUpdate(e.target.value);
   }
 
+  //filtro por nombre de actividad
   function handleActivityFilterByName(e) {
     dispatch(filterByActivityName(e.target.value));
+    setUpdate(e.target.value);
   }
 
   //ordenar por nombre o poblacion
   function handleSort(e) {
     e.preventDefault();
     dispatch(sort(e.target.value));
-    setCurrentPage(1);
-    setOrder(e.target.value);
+    setUpdate(e.target.value);
   }
 
-  /*
-  Lógica: en cada pag, voy tomando del array de países (importado del estado global en la constante countries)
-  una slice que vaya desde firstIdx hasta lastIdx, sin incluir este último.
-  */
-  var lastIdx = currentPage * countriesPerPage; // en la primera página, lastIdx = 1 * 9 = 9
-  var firstIdx = lastIdx - countriesPerPage; // en la primera página, firstIdx = 9 - 9 = 0
-  var currentCountries = countries.slice(firstIdx, lastIdx); // en la primera página, currentCharacters = countries.slice(0,9)
-
-  /*function handleClick(e) {
-    e.preventDefault();
-    dispatch(getAllCountries());
-  }*/
-  return (    
+  return (
     <div className={styles.container}>
       <Navbar
         sort={handleSort}
@@ -72,7 +75,6 @@ export default function Home() {
         actFilter={handleActivityFilter}
         actNameFilter={handleActivityFilterByName}
       />
-
       <div className={styles.countryContainer}>
         {currentCountries.length ? (
           currentCountries.map((c) => (
@@ -88,15 +90,11 @@ export default function Home() {
           <Error text={"No countries found. Please try again"} />
         )}
       </div>
-
       <Pagination
-        amountPerPage={countriesPerPage}
-        totalAmount={countries.length}
-        pageNumber={pages}
+        coutriesPerPage={countriesPerPage}
+        allCountries={countries.length}
+        pagination={pagination}
       />
     </div>
   );
 }
-
-
-
