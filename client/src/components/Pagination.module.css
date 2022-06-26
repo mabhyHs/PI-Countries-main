@@ -26,10 +26,10 @@
   align-items: center;
 }
 .number {
-  color: #e7dcc7;
+  color: var(--main-color-light);
   cursor: pointer;
-  background-color: #675f51;
-  border: 1px solid #e7dcc7;
+  background-color: var(--main-color-dark);
+  border: 1px solid var(--main-color-light);
 
   font-size: 16px;
   text-align: center;
@@ -45,9 +45,9 @@
 }
 .number:hover {
   text-decoration: none;
-  background-color: #e7dcc7;
-  color: #675f51;
+  background-color: var(--main-color-light);
+  color: var(--main-color-dark);
   cursor: pointer;
-  border: 1px solid #675f51;
+  border: 1px solid var(--main-color-dark);
 
 }

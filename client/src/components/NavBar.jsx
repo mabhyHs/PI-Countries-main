@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { getAllCountries } from "../actions";
 import Searchbar from "./Searchbar";
 import { Link } from "react-router-dom";
+import imgNav from "../img/NavBarIcon.png";
+
 import "./Navbar.css";
 
 export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
@@ -28,10 +30,14 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
       <div className={click ? "main-container" : ""} onClick={() => Close()} />
 
       <nav className="navbar" onClick={(e) => e.stopPropagation()}>
-
-        <div className="nav-container">      
-            <Link className="back-link" to="/">Back
-            </Link>
+        <div className="nav-container">
+          <Link className="back-link" to="/">
+            <img
+              src={imgNav}
+              className="nav-img"
+              alt="name henry cuntries"
+            ></img>
+          </Link>
           <button className="nav-btn" onClick={(e) => handleClick(e)}>
             Reload countries
           </button>
@@ -41,7 +47,6 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
             </Link>
           </button>
           <Searchbar />
-
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <select className="nav-links" onChange={(e) => contFilter(e)}>
@@ -82,9 +87,10 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
               </select>
             </li>
           </ul>
-
           <div className="nav-icon" onClick={handleClickNavbar}>
-            <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
+            <div className="nav-btn">
+              Filters <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
+            </div>
           </div>
         </div>
       </nav>
