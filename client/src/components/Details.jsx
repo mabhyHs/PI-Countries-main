@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCountryDetails } from '../actions'
 import { Link } from 'react-router-dom'
 import styles from './Details.module.css'
+import headerNav from "../img/iconDark.png";
+
+
 
 export default function Details({ country }) {
   const dispatch = useDispatch()
@@ -15,6 +18,7 @@ export default function Details({ country }) {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
+      <img alt='Henry countries tittle' src={headerNav} className={styles.headerImg} />
         <div className={styles.imgContainer}>
           <img alt='flag' src={details.flag} className={styles.img} />
         </div>

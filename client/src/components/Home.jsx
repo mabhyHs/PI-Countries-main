@@ -64,7 +64,7 @@ export default function Home() {
     e.preventDefault();
     dispatch(getAllCountries());
   }*/
-  return (
+  return (    
     <div className={styles.container}>
       <Navbar
         sort={handleSort}
@@ -97,3 +97,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+

@@ -10,26 +10,28 @@
   .input {
     height: 80%;
     width: 60%;
-    background-color: #f3f1ed;
-    border: 1px solid #f3f1ed;
+    background-color: var(--input-bg-color);
+    border: 1px solid var(--input-bg-color);
     border-top-left-radius: 15px;
     border-end-start-radius: 15px;
+  }
+
+  .input::placeholder{
+    padding-left:15px;
   }
   
   .button {
     height: 80%;
     width: 20%;
-    background-color: #f3f1ed;
-    border: 1px solid #f3f1ed;
-    border-end-end-radius: 15px;
-    border-top-right-radius: 15px;
-
+    background-color: var(--input-bg-color);
+    border: 1px solid var(--input-bg-color);
+    border-radius: 0px 15px 15px 0px;
   }
   
   .button:hover {
     cursor: pointer;
-    background-color: #776c62;
-    color: #f3f1ed;
-    border: 1px solid #f3f1ed;
+    background-color: var(--main-color-dark);
+    color: var(--input-bg-color);
+    border: 1px solid var(--input-bg-color);
   }
   

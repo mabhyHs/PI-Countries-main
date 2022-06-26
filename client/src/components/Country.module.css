@@ -2,18 +2,23 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   flex-direction: row;
   margin: 15px;
-  background-color: #f3f1ed;
+  background-color: var(--input-bg-color);
   width: 300px;
   height: 400px;
-  border-radius:  60px;
+  border-radius: 60px;
   transition: 0.6s;
+  background: linear-gradient(to bottom, #e2e2e2ec 0%, #e2e2e29b 100%),
+    url("../img/hd-wallpaper-1074131_640.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+  background-size: cover;
 }
 
 .card:hover {
-  -webkit-transform:scale(1.1);
-  transform:scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
   filter: drop-shadow(8px 8px 10px rgba(42, 42, 42, 0.768));
-
 }
 
 .link {
@@ -29,7 +34,7 @@
   margin: 10px;
 }
 .imgContainer {
-  width: 250px;
+  width: 300px;
   margin-right: 3%;
 }
 

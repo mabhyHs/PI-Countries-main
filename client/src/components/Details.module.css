@@ -1,6 +1,6 @@
 .container {
     height: 100vh;
-    background-color: #f3f1ed;
+    background-color: var(--input-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,16 +18,16 @@
     height: 100%;
     background-color: #dad4cc83;
     z-index: 0;
-    border-bottom: 1px solid #776c62;
+    border-bottom: 1px solid var(--main-color-dark);
   }
   
   .card {
-    display: flex;
-    flex-direction: column;
+    width: 450px;
     padding: 1.5vh 0.8vw;
-    background-color: #f3f1edb7;
+    background-color: var(--modal-bg-color);
     box-shadow: -1px 2px 104px 12px rgba(0, 0, 0, 0.68);
     z-index: 10;
+    border-radius: 16px;
   }
   
   .infoContainer {
@@ -36,17 +36,23 @@
   }
   
   .img {
-    width: 35vw;
-    height: 40vh;
+    border-radius: 16px;
+  }
+
+  .headerImg{
+    width:300px;
+    margin-bottom: 15px;
+    filter: drop-shadow(2px 1px 1px rgba(152, 152, 152, 0.695));
   }
   
   .title {
     margin: 0;
+    font-size: 2rem;
   }
   
   .subtitle {
     margin-top: 1vh;
-    margin-bottom: 3vh;
+    font-size: 1.2rem;
   }
   
   h4 {
@@ -54,7 +60,7 @@
   }
   
   .activities {
-    margin-top: 3vh;
+    margin-top: 2vh;
     margin-bottom: 0;
   }
   
@@ -65,16 +71,31 @@
   
   .btn {
     width: 50%;
-    background-color: #f3f1ed;
-    border: 1px solid #776c62;
+    background-color: var(--input-bg-color);
+    border: 1px solid var(--main-color-dark);
     line-height: 2rem;
     font-size: 1rem;
+    border-radius: 16px;
   }
   
   .btn:hover {
     cursor: pointer;
-    background-color: #776c62;
-    color: #f3f1ed;
-    border: 1px solid #776c62;
+    background-color: var(--hover-bg-dark);
+    color: var(--input-bg-color);
+    border: 1px solid var(--main-color-dark);
+  }
+
+  @media screen and (max-width: 900px) {
+    .card{
+      width: 350px;
+    }
+    .title {
+      font-size: 1.5rem;
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+    }
+    
   }
   

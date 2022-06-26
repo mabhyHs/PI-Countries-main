@@ -22,14 +22,14 @@
   background: transparent;
   -webkit-animation: jello-horizontal 0.9s both;
   animation: jello-horizontal 0.9s both;
-  border: 2px solid #e7dcc7;
+  border: 2px solid var(--main-color-light);
   outline: none;
-  color: #e7dcc7;
+  color: var(--main-color-light);
   font-size: 17px;
 }
 .btn:hover {
-  background: #5c4b3f;
-  color: #ffffff;
+  background: var(--hover-bg-dark);
+  color: var(--main-color-light);
   animation: squeeze3124 0.9s both;
 }
 @keyframes squeeze3124 {
