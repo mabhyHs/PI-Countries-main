@@ -7,7 +7,7 @@ import headerNav from "../img/iconDark.png";
 
 export default function CreateActivity() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useHistory();//para redireccionar luego de cargar una nueva actividad
   const countries = useSelector((state) => state.allCountries);
 
   const [details, setDetails] = useState({
@@ -17,6 +17,9 @@ export default function CreateActivity() {
     season: "",
     countries: [],
   });
+
+  const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  
 
   useEffect(() => {
     dispatch(getAllCountries());
@@ -53,11 +56,11 @@ export default function CreateActivity() {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-      <img
-        alt="Henry countries tittle"
-        src={headerNav}
-        className={styles.headerImg}
-      />
+        <img
+          alt="Henry countries tittle"
+          src={headerNav}
+          className={styles.headerImg}
+        />
         <form onSubmit={(e) => handleSubmit(e)}>
           <h4 className={styles.title}>Add Touristic Activity</h4>
           <div className={styles.formSection}>
@@ -76,13 +79,23 @@ export default function CreateActivity() {
             <label className={styles.label} htmlFor="duration">
               Duration:
             </label>
-            <input
-              type="number"
-              id="duration"
+            <select
               name="duration"
+              id="duration"
               className={styles.input}
               onChange={(e) => handleChange(e)}
-            />
+            >
+              <option value="" disabled defaultValue selected>
+                Hours...
+              </option>
+              {hours.map((h) => {
+                return (
+                  <option key={h} value={h}>
+                    {h}
+                  </option>
+                );
+              })}
+            </select>
           </div>
 
           <div className={styles.formSection}>

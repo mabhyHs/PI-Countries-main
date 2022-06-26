@@ -10,6 +10,16 @@ export function getAllCountries() {
   }
 }
 
+export function getAllActivities() {
+  return async (dispatch) => {
+    const activities = await axios.get('http://localhost:3001/activities')
+    return dispatch({
+      type: 'GET_ACTIVITIES',
+      payload: activities.data,
+    })
+  }
+}
+
 export function getCountriesByName(name) {
   return async (dispatch) => {
     try {
