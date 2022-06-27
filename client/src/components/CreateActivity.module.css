@@ -94,3 +94,56 @@ label{
 ul {
   list-style: none;
 }
+
+.countriesSelected ul{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.8rem;
+  justify-content: center;
+  align-content: center;
+  justify-items: stretch;
+  padding: 0px;
+
+}
+
+.countriesSelected li{
+  background-color: var(--main-color-light);
+  list-style: none;
+  border: 2px solid var(--main-color-dark);
+  border-radius: 10px;
+  color: var(--main-color-dark);
+  position: relative;
+}
+
+.countriesSelected li:hover{
+  cursor: pointer;
+}
+
+.countriesSelected li::before{
+  content: "";
+  position: absolute;
+}
+
+.countriesSelected p{
+  margin: 2px;
+  padding: 2px;
+}
+
+.countriesSelected li:hover::before{
+  content: "X";
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  left: 0%;
+  top: 0;
+  background-color: red;
+  color: var(--main-color-light);
+}
+
+.error_message{
+  color: rgba(255, 26, 26, 0.7);
+  font-size: 0.8rem;
+  font: small-caps 100%/200% serif;
+}

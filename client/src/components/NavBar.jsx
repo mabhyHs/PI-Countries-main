@@ -37,6 +37,7 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
 
       <nav className="navbar" onClick={(e) => e.stopPropagation()}>
         <div className="nav-container">
+
           <Link className="back-link" to="/">
             <img
               src={imgNav}
@@ -44,6 +45,7 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
               alt="name henry cuntries"
             ></img>
           </Link>
+          
           <button className="nav-btn" onClick={(e) => handleClick(e)}>
             Reload countries
           </button>
