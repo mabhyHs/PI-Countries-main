@@ -7,10 +7,10 @@ import headerNav from "../img/iconDark.png";
 
 export default function CreateActivity() {
   const dispatch = useDispatch();
-  const history = useHistory();//para redireccionar luego de cargar una nueva actividad
+  const history = useHistory(); //para redireccionar luego de cargar una nueva actividad
   const countries = useSelector((state) => state.allCountries);
 
-  const [details, setDetails] = useState({
+  const [formValues, setFormValues] = useState({
     name: "",
     difficulty: "",
     duration: "",
@@ -19,30 +19,39 @@ export default function CreateActivity() {
   });
 
   const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  
 
   useEffect(() => {
     dispatch(getAllCountries());
   }, [dispatch]);
 
   function handleChange(e) {
-    setDetails({
-      ...details,
+    setFormValues({
+      ...formValues,
       [e.target.name]: e.target.value,
     });
   }
 
   function handleSelect(e) {
-    setDetails({
-      ...details,
-      countries: [...details.countries, e.target.value],
+    setFormValues({
+      ...formValues,
+      countries: [...formValues.countries, e.target.value],
     });
   }
 
+  //eliminar país de actividad
+  const handleDelete = (countryDelete) => {
+    setFormValues({
+      ...formValues,
+      countries: formValues.countries.filter(
+        (count) => count !== countryDelete
+      ),
+    });
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createActivity(details));
-    setDetails({
+    dispatch(createActivity(formValues));
+    setFormValues({
       name: "",
       difficulty: "",
       duration: "",
@@ -151,10 +160,21 @@ export default function CreateActivity() {
               ))}
             </select>
           </div>
-
-          <ul>
-            <li>{details.countries.map((c) => `${c} | `)}</li>
-          </ul>
+          
+          <div className={styles.countriesSelected}>
+                <div className={styles.title_countries}>
+                    <h4>Countries:</h4>
+                </div>
+                <ul className={styles.ul_element}>
+                    {
+                        formValues.countries.map(el => 
+                        <li key={el} onClick={() => handleDelete(el)}>
+                            <p>{el}</p>
+                        </li>    
+                        )
+                    }
+                </ul>
+            </div>
 
           <Link to="/countries">
             <button className={styles.btnBack}>Go back</button>
