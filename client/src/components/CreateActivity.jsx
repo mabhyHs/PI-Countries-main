@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getAllCountries, createActivity } from "../actions";
+import { getAllCountries, createActivity, getAllActivities } from "../actions";
 import styles from "./CreateActivity.module.css";
 import headerNav from "../img/iconDark.png";
 
@@ -9,14 +9,17 @@ export default function CreateActivity() {
   const dispatch = useDispatch();
   const history = useHistory(); //para redireccionar luego de cargar una nueva actividad
   const countries = useSelector((state) => state.allCountries);
+  const allActivities = useSelector((state) => state.allActivities);
 
   const [formValues, setFormValues] = useState({
     name: "",
-    difficulty: "",
-    duration: "",
-    season: "",
+    difficulty: "DEFAULT",
+    duration: "DEFAULT",
+    season: "DEFAULT",
     countries: [],
   });
+
+  const [errors, setErrors] = useState({});
 
   const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -50,16 +53,21 @@ export default function CreateActivity() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createActivity(formValues));
-    setFormValues({
-      name: "",
-      difficulty: "",
-      duration: "",
-      season: "",
-      countries: [],
-    });
-    history.push("./countries");
-    alert("Activity created!");
+    if (Object.keys(errors).length === 0)
+      if (allActivities.find((act) => act.name === formValues.name))
+        return setErrors({ ...errors, name: "This activity already exist" });
+      else {
+        dispatch(createActivity(formValues));
+        setFormValues({
+          name: "",
+          difficulty: "DEFAULT",
+          duration: "DEFAULT",
+          season: "DEFAULT",
+          countries: [],
+        });
+        history.push("./countries");
+        alert("Activity created!");
+      }
   }
 
   return (
@@ -82,6 +90,7 @@ export default function CreateActivity() {
               onChange={(e) => handleChange(e)}
               required
             />
+            {errors.name && <p>{errors.name}</p>}
           </div>
 
           <div className={styles.formSection}>
@@ -160,21 +169,19 @@ export default function CreateActivity() {
               ))}
             </select>
           </div>
-          
+
           <div className={styles.countriesSelected}>
-                <div className={styles.title_countries}>
-                    <h4>Countries:</h4>
-                </div>
-                <ul className={styles.ul_element}>
-                    {
-                        formValues.countries.map(el => 
-                        <li key={el} onClick={() => handleDelete(el)}>
-                            <p>{el}</p>
-                        </li>    
-                        )
-                    }
-                </ul>
+            <div className={styles.title_countries}>
+              <h4>Countries:</h4>
             </div>
+            <ul className={styles.ul_element}>
+              {formValues.countries.map((el) => (
+                <li key={el} onClick={() => handleDelete(el)}>
+                  <p>{el}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <Link to="/countries">
             <button className={styles.btnBack}>Go back</button>
