@@ -30,10 +30,10 @@ countries.get('/', async (req, res) => {
 
   if (req.query.name) {
     let { name } = req.query
-    name = name[0].toUpperCase() + name.slice(1).toLowerCase()
+    //name = name[0].toUpperCase() + name.slice(1).toLowerCase()
 
     const found = await Country.findAll({
-      where: { name: { [Op.substring]: name } },
+      where: { name: { [Op.iLike]: `%${name}%` } },
     })
  
     return res.json(found)
