@@ -143,7 +143,7 @@ export default function CreateActivity() {
               <p className={styles.error_message}>{errors.name}</p>
             )}
             <input
-              autocomplete="off"
+              autoComplete="off"
               type="text"
               id="name"
               name="name"
