@@ -91,6 +91,14 @@ label{
   border: 1px solid var(--main-color-dark);
 }
 
+.btn:disabled,
+.btn[disabled]{
+    color: grey;
+    background-color: white;
+    border-radius: 9px;
+    cursor: default;
+    border: 2px solid grey;
+}
 ul {
   list-style: none;
 }
@@ -145,5 +153,6 @@ ul {
 .error_message{
   color: rgba(255, 26, 26, 0.7);
   font-size: 0.8rem;
-  font: small-caps 100%/200% serif;
+  font-family: "PT Sans", sans-serif;
+
 }

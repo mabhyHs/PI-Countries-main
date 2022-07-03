@@ -32,11 +32,10 @@ export default function CreateActivity() {
     dispatch(getAllActivities());
   }, [dispatch]);
 
-
   // ---- funcion para manejo de errores-----
 
   function validate(activity) {
-    let errors = {}; //seteo objeto vacio para los errores
+    let errors = {}; //seteo objeto vacio para cargar los errores
     if (activity.name === "") errors.name = "A name is required";
     if (/^\s/.test(activity.name)) errors.name = "Not allow";
     if (/[`~,.<>;':"/[\]|{}()=_+-?¡!¿*{}´´¨´&%$#°]/.test(activity.name))
@@ -47,7 +46,7 @@ export default function CreateActivity() {
       errors.duration = "You must select a duration";
     if (activity.season === "DEFAULT")
       errors.season = "You must select a seasson";
-    if (activity.countries.length === "")
+    if (activity.countries.length === 0)
       errors.countries = "You must select at least one country";
     return errors;
   }
@@ -67,10 +66,24 @@ export default function CreateActivity() {
   }
 
   function handleSelect(e) {
-    setFormValues({
-      ...formValues,
-      countries: [...formValues.countries, e.target.value],
-    });
+    if (!formValues.countries.includes(e.target.value)) {
+      setFormValues({
+        ...formValues,
+        countries: [...formValues.countries, e.target.value],
+      });
+      setErrors(
+        validate({
+          ...formValues,
+          countries: [...formValues.countries, e.target.value],
+        })
+      );
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You already selected this country",
+      });
+    }
   }
 
   //eliminar país de actividad
@@ -86,8 +99,6 @@ export default function CreateActivity() {
   function handleSubmit(e) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
-      if (formValues.countries === 0)
-        return setErrors({ ...errors, countries: "You must select a country" });
       if (allActivities.find((act) => act.name === formValues.name))
         return setErrors({ ...errors, name: "This activity already exist" });
       else {
@@ -103,7 +114,7 @@ export default function CreateActivity() {
           icon: "success",
           title: "The activity was created successfully",
           showConfirmButton: false,
-          timer: 2000,
+          timer: 1500,
         });
         history.push("./countries");
       }
@@ -111,8 +122,7 @@ export default function CreateActivity() {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Something went wrong!",
-        footer: '<a href="">Why do I have this issue?</a>',
+        text: "All fields must be completed and you must select at least one country for the activity.",
       });
     }
   }
@@ -129,6 +139,9 @@ export default function CreateActivity() {
           <h4 className={styles.title}>Add Touristic Activity</h4>
           <div className={styles.formSection}>
             <label htmlFor="name">Name:</label>
+            {errors.name && (
+              <p className={styles.error_message}>{errors.name}</p>
+            )}
             <input
               autocomplete="off"
               type="text"
@@ -139,13 +152,40 @@ export default function CreateActivity() {
               onChange={(e) => handleChange(e)}
               required
             />
-            {errors.name && <p>{errors.name}</p>}
           </div>
 
+          {/* DIFFICULTY */}
+          <div className={styles.formSection}>
+            <label className={styles.label} htmlFor="difficulty">
+              Difficulty:
+            </label>
+            {errors.difficulty && (
+              <p className={styles.error_message}>{errors.difficulty}</p>
+            )}
+            <select
+              id="difficulty"
+              name="difficulty"
+              value={formValues.difficulty}
+              className={styles.input}
+              onChange={(e) => handleChange(e)}
+            >
+              <option value="DEFAULT">Difficulty...</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+
+          {/* DURATION */}
           <div className={styles.formSection}>
             <label className={styles.label} htmlFor="duration">
               Duration:
             </label>
+            {errors.duration && (
+              <p className={styles.error_message}>{errors.duration}</p>
+            )}
             <select
               name="duration"
               id="duration"
@@ -164,34 +204,16 @@ export default function CreateActivity() {
                 );
               })}
             </select>
-            {errors.duration && <p>{errors.difficulty}</p>}
           </div>
 
-          <div className={styles.formSection}>
-            <label className={styles.label} htmlFor="difficulty">
-              Difficulty:
-            </label>
-            <select
-              id="difficulty"
-              name="difficulty"
-              value={formValues.difficulty}
-              className={styles.input}
-              onChange={(e) => handleChange(e)}
-            >
-              <option value="DEFAULT">Difficulty...</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            {errors.difficulty && <p>{errors.difficulty}</p>}
-          </div>
-
+          {/* SEASON */}
           <div className={styles.formSection}>
             <label className={styles.label} htmlFor="season">
               Season:
             </label>
+            {errors.season && (
+              <p className={styles.error_message}>{errors.season}</p>
+            )}
             <select
               className={styles.input}
               id="season"
@@ -205,13 +227,16 @@ export default function CreateActivity() {
               <option value="Winter">Winter</option>
               <option value="Spring">Spring</option>
             </select>
-            {errors.season && <p>{errors.season}</p>}
           </div>
 
+          {/* COUNTRY */}
           <div className={styles.formSection}>
             <label className={styles.label} htmlFor="country">
               Country:
             </label>
+            {errors.countries && (
+              <p className={styles.error_message}>{errors.countries}</p>
+            )}
             <select
               className={styles.input}
               name="countries"
@@ -223,7 +248,6 @@ export default function CreateActivity() {
                 <option value={c.id}>{c.name}</option>
               ))}
             </select>
-            {errors.countries && <p>{errors.countries}</p>}
           </div>
 
           <div className={styles.countriesSelected}>
