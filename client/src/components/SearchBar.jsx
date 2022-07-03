@@ -22,7 +22,7 @@ export default function Searchbar() {
   return (
     <div className={styles.container}>
       <input
-        autocomplete="off"
+        autoComplete="off"
         className={styles.input}
         type="text"
         value={value}
