@@ -159,7 +159,6 @@
     display: none;
   }
   .nav-container {
-    justify-content: flex-end;
     flex-direction: row-reverse;
   }
   .nav-menu {

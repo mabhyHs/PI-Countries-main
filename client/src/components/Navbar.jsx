@@ -49,11 +49,13 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
           <button className="nav-btn" onClick={(e) => handleClick(e)}>
             Reload countries
           </button>
+
           <button className="nav-btn">
             <Link className="navBtnLink" to="/activity">
               Add Activity
             </Link>
           </button>
+          
           <Searchbar />
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
@@ -61,6 +63,7 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
                 <option value="All">Filter by region...</option>
                 <option value="Africa">Africa</option>
                 <option value="Americas">Americas</option>
+                <option value="Antarctic">Antarctic</option>
                 <option value="Asia">Asia</option>
                 <option value="Europe">Europe</option>
                 <option value="Oceania">Oceania</option>                

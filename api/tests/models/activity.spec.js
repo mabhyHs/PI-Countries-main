@@ -3,10 +3,8 @@ const { expect } = require('chai');
 
 //Test for the Activity model 
 describe('Activity model', () => {
-  //before each test, create a new Activity model instance
   beforeEach(() => Activity.sync({ force: true }));
 
-  //create a test that creates a new Activity model instance
   it('creates a new Activity model instance', () => {
     const activity = Activity.build({
       name: 'TEST',

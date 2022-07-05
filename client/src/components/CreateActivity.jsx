@@ -36,8 +36,8 @@ export default function CreateActivity() {
 
   function validate(activity) {
     let errors = {}; //seteo objeto vacio para cargar los errores
-    if (activity.name === "") errors.name = "A name is required";
-    if (/^\s/.test(activity.name)) errors.name = "Not allow";
+    if (activity.name === "" || activity.name.length < 3) errors.name = "A name is required and must be at least 3 characters long";
+    if (/^\s/.test(activity.name)) errors.name = "Blank spaces are not allowed";//espacios en blanco
     if (/[`~,.<>;':"/[\]|{}()=_+-?¡!¿*{}´´¨´&%$#°]/.test(activity.name))
       errors.name = "Name not allowed especials characters or numbers";
     if (activity.difficulty === "DEFAULT")
