@@ -63,7 +63,7 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
                 <option value="Americas">Americas</option>
                 <option value="Asia">Asia</option>
                 <option value="Europe">Europe</option>
-                <option value="Oceania">Oceania</option>
+                <option value="Oceania">Oceania</option>                
               </select>
             </li>
 
@@ -86,7 +86,7 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
               >
                 <option value="">Filter by activity...</option>
                 {activities.map((a) => (
-                  <option value={a.name}>{a.name}</option>
+                  <option key={a.id} value={a.name}>{a.name}</option>
                 ))}
               </select>
             </li>
@@ -101,6 +101,7 @@ export default function Navbar({ sort, contFilter, actFilter, actNameFilter }) {
               </select>
             </li>
           </ul>
+          
           <div className="nav-icon" onClick={handleClickNavbar}>
             <div className="nav-btn">
               Filters <i className={click ? "fa fa-times" : "fa fa-bars"}></i>

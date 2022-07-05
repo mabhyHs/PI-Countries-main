@@ -8,7 +8,6 @@ import {
   sort,
 } from "../actions";
 import styles from "./Home.module.css";
-//import { Link } from "react-router-dom";
 import { Country } from "./Country";
 import Pagination from "./Pagination";
 import Navbar from "./Navbar";
@@ -21,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getAllCountries());
   }, [dispatch]);
-
+  // eslint-disable-next-line no-unused-vars
   const [update, setUpdate] = useState("");
   const [currentPage, setcurrentPage] = useState(1);
   const countriesPerPage = 10;
