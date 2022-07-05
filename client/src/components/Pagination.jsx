@@ -22,6 +22,7 @@ export default function Pagination({
     }
   }
 
+
   useEffect(() => {
     // console.log("si cambio de indice detecte el cambio");
   }, [indexArray]);

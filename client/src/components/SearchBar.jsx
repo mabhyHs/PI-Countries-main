@@ -27,6 +27,7 @@ export default function Searchbar() {
         type="text"
         value={value}
         onChange={(e) => handleChange(e)}
+        onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(e); }}
         placeholder="Search countries..."
       />
       <button

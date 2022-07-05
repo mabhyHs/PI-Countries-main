@@ -22,7 +22,7 @@ export default function CreateActivity() {
 
   const [errors, setErrors] = useState({});
 
-  const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const hours = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12 or more hours"];
 
   useEffect(() => {
     dispatch(getAllCountries());
@@ -193,7 +193,7 @@ export default function CreateActivity() {
               className={styles.input}
               onChange={(e) => handleChange(e)}
             >
-              <option value="DEFAULT" disabled defaultValue selected>
+              <option value="DEFAULT" disabled defaultValue>
                 Hours...
               </option>
               {hours.map((h) => {
@@ -245,7 +245,7 @@ export default function CreateActivity() {
             >
               <option value="">Countries...</option>
               {countries.map((c) => (
-                <option value={c.id}>{c.name}</option>
+                <option  key={c.id} value={c.id}>{c.name}</option>
               ))}
             </select>
           </div>
