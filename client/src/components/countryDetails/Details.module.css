@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../img/background-g3bd031557_1920.jpg');
+    background-image: url('../../img/background-g3bd031557_1920.jpg');
     background-size: cover;
     z-index: -1;
   }

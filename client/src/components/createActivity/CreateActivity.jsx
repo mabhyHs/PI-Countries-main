@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getAllCountries, createActivity, getAllActivities } from "../actions";
+import { getAllCountries, createActivity, getAllActivities } from "../../actions";
 import Swal from "sweetalert2";
 import styles from "./CreateActivity.module.css";
-import headerNav from "../img/iconDark.png";
+import headerNav from "../../img/iconDark.png";
 
 export default function CreateActivity() {
   const dispatch = useDispatch();

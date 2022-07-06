@@ -7,7 +7,7 @@
   align-items: center;
   padding: 0;
   background: linear-gradient(to bottom, #b4b4b485 0%, #0000005f 100%),
-    url("../img/background-g3bd031557_1920.jpg");
+    url("../../img/background-g3bd031557_1920.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center;
@@ -29,7 +29,7 @@
   .container {
     overflow: hidden;
     background: linear-gradient(to bottom, b4b4b485  0%, #0000005f 100%),
-      url("../img/background-gb52fa81c1_640.jpg");
+      url("../../img/background-gb52fa81c1_640.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center;
