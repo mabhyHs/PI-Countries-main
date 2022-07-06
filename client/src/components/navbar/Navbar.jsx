@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCountries, getAllActivities } from "../actions";
-import Searchbar from "./Searchbar";
+import { getAllCountries, getAllActivities } from "../../actions";
+import Searchbar from "../searchBar/Searchbar";
 import { Link } from "react-router-dom";
-import imgNav from "../img/NavBarIcon.png";
+import imgNav from "../../img/NavBarIcon.png";
 
 import "./Navbar.css";
 

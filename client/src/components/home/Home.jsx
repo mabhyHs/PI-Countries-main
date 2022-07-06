@@ -6,12 +6,12 @@ import {
   filterByActivity,
   filterByActivityName,
   sort,
-} from "../actions";
+} from "../../actions";
 import styles from "./Home.module.css";
-import { Country } from "./Country";
-import Pagination from "./Pagination";
-import Navbar from "./Navbar";
-import Loading from "./Loading";
+import { Country } from "../country/Country";
+import Pagination from "../pagination/Pagination";
+import Navbar from "../../components/navbar/Navbar";
+import Loading from "../loading/Loading";
 
 export default function Home() {
   const dispatch = useDispatch();

@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom, #2b2b2b41 0%, #0000005f 100%),
-    url("../img/journey-g88bc601a1_1920.jpg");
+    url("../../img/journey-g88bc601a1_1920.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center;
@@ -74,7 +74,7 @@
   .container{
     overflow: hidden;
     background: linear-gradient(to bottom, #2b2b2b41 0%, #0000005f 100%),
-      url("../img/journey-g7037dc8ac_640.jpg");
+      url("../../img/journey-g7037dc8ac_640.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center;

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import effect from "../img/effect.png";
-import backbox from "../img/backbox.png";
-import frontBox from "../img/frontBox.png";
-import RightSide from "../img/RightSide.png";
-import leftSide from "../img/leftSide.png";
-import TopToBox from "../img/TopToBox.png";
+import effect from "../../img/effect.png";
+import backbox from "../../img/backbox.png";
+import frontBox from "../../img/frontBox.png";
+import RightSide from "../../img/RightSide.png";
+import leftSide from "../../img/leftSide.png";
+import TopToBox from "../../img/TopToBox.png";
 import "./Landing.css";
 import styles from "./Landing.module.css";
 
