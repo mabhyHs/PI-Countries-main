@@ -18,7 +18,10 @@
   text-align: center;
 }
 
-.btnGoPages, .paginationLi button{
+.paginationUl{
+  padding: 0px;
+}
+.btnGoPages, .arrrowBtn, .paginationLi button{
   padding: 0.5rem;
   color: var(--main-color-light);
   cursor: pointer;
@@ -33,7 +36,7 @@
 }
 
 .btnGoPages{
-  width: 70px;
+  width: 50px;
 }
 
 .btnGoPages:hover,.paginationLi button:hover {
@@ -43,7 +46,6 @@
   cursor: pointer;
   border: 1px solid var(--main-color-dark);
 }
-
 
 @media (max-width: 812px) {
   .btnGoPages{

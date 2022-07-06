@@ -22,7 +22,7 @@ export default function Home() {
   }, [dispatch]);
   // eslint-disable-next-line no-unused-vars
   const [update, setUpdate] = useState("");
-  const [currentPage, setcurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const countriesPerPage = 10;
   const lastIndex = currentPage * countriesPerPage; //2 * 10 = 20 **  2 * 10 -1 = 19
   const firstIndex = lastIndex - countriesPerPage; //20 - 10= 10  ** 20 - 10 -1 = 9
@@ -33,12 +33,28 @@ export default function Home() {
     : (currentCountries = countries.slice(firstIndex - 1, lastIndex - 1)); //slice(9, 19) = 9, 10, 11,...18
 
   const pagination = (pageNumber) => {
-    setcurrentPage(pageNumber);
+    let page = currentPage;
+    if (pageNumber === "first") {
+      setCurrentPage(1);
+    } else if (pageNumber === "last") {
+      setCurrentPage(Math.ceil(countries.length / countriesPerPage));
+    } else if (
+      pageNumber === "next" &&
+      currentPage < Math.ceil(countries.length / countriesPerPage)
+    ) {
+      page = currentPage + 1;
+      setCurrentPage(page);
+    } else if (pageNumber === "prev" && currentPage > 1) {
+      page = currentPage - 1;
+      setCurrentPage(page);
+    } else if (typeof pageNumber === "number") {
+      setCurrentPage(pageNumber);
+    }
   };
 
   //al cambiar el contenido del arreglo countries se establezca que inicie en la primer pagina
   useEffect(() => {
-    setcurrentPage(1);
+    setCurrentPage(1);
   }, [countries]);
 
   //filtro por continente
@@ -74,9 +90,15 @@ export default function Home() {
         actFilter={handleActivityFilter}
         actNameFilter={handleActivityFilterByName}
       />
+        <Pagination
+        currentPage={currentPage}
+        countriesPerPage={countriesPerPage}
+        allCountries={countries.length}
+        pagination={pagination}
+      />
       <div className={styles.countryContainer}>
         {currentCountries.length ? (
-          currentCountries.map((c) => (
+          currentCountries?.map((c) => (
             <Country
               name={c.name}
               flag={c.flag}
@@ -89,11 +111,6 @@ export default function Home() {
           <Error text={"No countries found. Please try again"} />
         )}
       </div>
-      <Pagination
-        coutriesPerPage={countriesPerPage}
-        allCountries={countries.length}
-        pagination={pagination}
-      />
     </div>
   );
 }
