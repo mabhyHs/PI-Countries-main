@@ -1,55 +1,57 @@
 import styles from "./Pagination.module.css";
-import React, { useEffect, useState } from "react";
 
 export default function Pagination({
-  coutriesPerPage,
+  countriesPerPage,
   allCountries,
   pagination,
+  currentPage,
 }) {
-  const pageNumbers = [];
-  let groupArrays = [];
+  let pageNumbers = [];
 
-  const [indexArray, setIndexArray] = useState(0);
-
-  for (let i = 1; i <= Math.ceil(allCountries / coutriesPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(allCountries / countriesPerPage); i++) {
     //cantidad de elementos totales, dividido limite de elementos por pagina
     pageNumbers.push(i);
   }
 
-  if (pageNumbers[0]) {
-    for (let i = 0; i < pageNumbers.length; i += 10) {
-      groupArrays = [...groupArrays, pageNumbers.slice(i, i + 10)]; //groupArrays = [[1,2,3], [4, 5, 6], [7,8,9]]
-    }
+  if (currentPage === 1) {
+    pageNumbers = pageNumbers.slice(currentPage - 1, currentPage + 1);
+  }
+  
+  if (
+    currentPage > 1 &&
+    currentPage < Math.ceil(allCountries / countriesPerPage)
+  ) {
+    pageNumbers = pageNumbers.slice(currentPage - 2, currentPage + 1);
   }
 
-
-  useEffect(() => {
-    // console.log("si cambio de indice detecte el cambio");
-  }, [indexArray]);
-
-  const handleNextbutton = () => {
-    setIndexArray((prevState) => prevState + 1);
-  };
-
-  const handleBeforeButton = () => {
-    setIndexArray((prevState) => prevState - 1);
-  };
-
+  if (currentPage === Math.ceil(allCountries / countriesPerPage)) {
+    pageNumbers = pageNumbers.slice(currentPage - 2, currentPage);
+  }
+  
   return (
     <nav className={styles.paginationNav}>
-      {
-        //si no está en el primer grupo de paginas no me deje devolver
-        groupArrays[0] && indexArray !== 0 ? (
-          <button className={styles.btnGoPages} onClick={handleBeforeButton}>
-            {"< "}prev
-          </button>
+      {currentPage > 1 ? (
+        <button
+          className={styles.btnGoPages}
+          onClick={() => pagination("first")}
+        >
+          First
+        </button>
+      ) : (
+        ""
+      )}
+      {currentPage > 1 ? (
+      <button className={styles.arrrowBtn} onClick={() => pagination("prev")}>
+        {" "}
+        &#x2039;
+      </button>
         ) : (
           ""
-        )
-      }
+        )}
+
       <ul className={styles.paginationUl}>
-        {groupArrays[0] &&
-          groupArrays[indexArray].map((number) => (
+        {pageNumbers &&
+          pageNumbers.map((number) => (
             <li
               onClick={() => pagination(number)}
               key={number}
@@ -59,16 +61,24 @@ export default function Pagination({
             </li>
           ))}
       </ul>
-      {
-        //si estoy en la ultima posicion de paginas no me muestre next
-        groupArrays[0] && indexArray !== groupArrays.length - 1 ? (
-          <button className={styles.btnGoPages} onClick={handleNextbutton}>
-            next{" >"}
-          </button>
-        ) : (
-          ""
-        )
-      }
+      {/* aparecer y desaparecer btn según página */}
+      {currentPage !== Math.ceil(allCountries / countriesPerPage) ? (
+      <button className={styles.arrrowBtn} onClick={() => pagination("next")}>
+        &#8250;
+      </button>
+      ) : (
+        ""
+      )}
+      {currentPage !== Math.ceil(allCountries / countriesPerPage) ? (
+        <button
+          className={styles.btnGoPages}
+          onClick={() => pagination("last")}
+        >
+          last
+        </button>
+      ) : (
+        ""
+      )}
     </nav>
   );
 }
