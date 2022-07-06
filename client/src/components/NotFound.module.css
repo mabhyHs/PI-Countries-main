@@ -1,0 +1,46 @@
+.page_404 {
+  padding: 40px 0;
+}
+
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+}
+h1, h3{
+  color: var(--main-color-dark);
+}
+h1 {
+  font-size: 5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.contant_box_404 {
+  margin-top: -50px;
+}
+
+.btn {
+  padding: 0.5rem;
+  color: var(--main-color-light);
+  cursor: pointer;
+  background-color: var(--main-color-dark);
+  border: 1px solid var(--main-color-light);
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  text-decoration: none;
+}
+.btn:hover {
+  background: var(--hover-bg-dark);
+  color: var(--main-color-light);
+}
