@@ -11,7 +11,7 @@ import styles from "./Home.module.css";
 import { Country } from "./Country";
 import Pagination from "./Pagination";
 import Navbar from "./Navbar";
-import Error from "./Error";
+import Loading from "./Loading";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -108,7 +108,7 @@ export default function Home() {
             />
           ))
         ) : (
-          <Error text={"No countries found. Please try again"} />
+          <Loading text={"No countries found. Please try again or press Reload Countries"} />
         )}
       </div>
     </div>
