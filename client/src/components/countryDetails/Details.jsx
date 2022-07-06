@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCountryDetails } from '../../actions'
+import { getCountryDetails } from '../../Redux/actions'
 import { Link } from 'react-router-dom'
 import styles from './Details.module.css'
 import headerNav from "../../img/iconDark.png";

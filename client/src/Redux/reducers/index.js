@@ -1,3 +1,4 @@
+import { GET_COUNTRIES,GET_ACTIVITIES, GET_COUNTRIES_BY_NAME,GET_COUNTRY_DETAILS,FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY, FILTER_BY_ACTIVITY_NAME,SORT ,CREATE_ACTIVITY } from '../constTypes.js'
 const initialState = {
   countries: [],
   allCountries: [],
@@ -7,18 +8,18 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_COUNTRIES":
+    case GET_COUNTRIES:
       return {
         ...state,
         countries: action.payload,
         allCountries: action.payload,
       };
-    case "GET_COUNTRIES_BY_NAME":
+    case GET_COUNTRIES_BY_NAME:
       return {
         ...state,
         countries: action.payload,
       };
-    case "FILTER_BY_CONTINENT":
+    case FILTER_BY_CONTINENT:
       const filteredByCntnt =
         action.payload === "All"
           ? state.allCountries
@@ -27,12 +28,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: filteredByCntnt,
       };
-    case "GET_ACTIVITIES":
+    case GET_ACTIVITIES:
       return {
         ...state,
         allActivities: action.payload,
       };
-    case "FILTER_BY_ACTIVITY":
+    case FILTER_BY_ACTIVITY:
       const filtered =
         action.payload === "All"
           ? state.allCountries
@@ -46,7 +47,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: filtered,
       };
-    case "FILTER_BY_ACTIVITY_NAME":
+    case FILTER_BY_ACTIVITY_NAME:
       const filteredByName =
         action.payload === "All"
           ? state.allCountries
@@ -59,7 +60,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: filteredByName,
       };
-    case "SORT":
+    case SORT:
       var sorted;
       if (action.payload.length === 2) {
         sorted =
@@ -84,11 +85,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: sorted,
       };
-    case "CREATE_ACTIVITY":
+    case CREATE_ACTIVITY:
       return {
         ...state,
       };
-    case "GET_COUNTRY_DETAILS":
+    case GET_COUNTRY_DETAILS:
       return {
         ...state,
         countryDetail: action.payload,

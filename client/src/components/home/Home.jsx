@@ -6,7 +6,7 @@ import {
   filterByActivity,
   filterByActivityName,
   sort,
-} from "../../actions";
+} from "../../Redux/actions";
 import styles from "./Home.module.css";
 import { Country } from "../country/Country";
 import Pagination from "../pagination/Pagination";

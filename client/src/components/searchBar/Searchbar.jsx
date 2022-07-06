@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getCountriesByName } from "../../actions";
+import { getCountriesByName } from "../../Redux/actions";
 import styles from "./Searchbar.module.css";
 
 export default function Searchbar() {
