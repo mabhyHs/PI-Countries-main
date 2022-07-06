@@ -39,8 +39,9 @@ activities.get("/", async (req, res, next) => {
 }
 );
 
+
 //ruta delete para eliminar una actividad
-activities.delete("/:id", async (req, res, next) => {
+/*activities.delete("/:id", async (req, res, next) => {
   try {
     const activity = await Activity.findByPk(req.params.id);
     await activity.destroy();
@@ -49,29 +50,9 @@ activities.delete("/:id", async (req, res, next) => {
     next(err);
   }
 }
-);
+);*/
 
-//ruta put para actualizar una actividad
-activities.put("/:id", async (req, res, next) => {
-  try {
-    const activity = await Activity.findByPk(req.params.id);
-    const { name, difficulty, duration, season, countries } = req.body;
-    await activity.update({
-      name,
-      difficulty,
-      duration,
-      season,
-    });
-    //creando relacion con paises
-    countries.map(
-      async (c) => await activity.setCountries(await Country.findByPk(c))
-    );
-    res.json(activity);
-  } catch (err) {
-    next(err);
-  }
-}
-);
+
 
 
 
