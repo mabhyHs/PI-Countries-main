@@ -1,0 +1,16 @@
+.error{
+    max-height:100vh ;
+}
+.loadingGif{
+    width: 250px;
+}
+
+.loadingText {
+    font-size: 2.5rem;
+}
+
+.errorText{
+    font-size: 2rem;
+    text-align: center;
+    padding: 15px;
+}
