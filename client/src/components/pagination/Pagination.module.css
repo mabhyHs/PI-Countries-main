@@ -47,6 +47,21 @@
   border: 1px solid var(--main-color-dark);
 }
 
+.arrrowBtn:hover{
+  text-decoration: none;
+  background-color: var(--main-color-light);
+  color: var(--main-color-dark);
+  cursor: pointer;
+  border: 1px solid var(--main-color-dark);
+}
+.paginationLi button:focus{
+  text-decoration: none;
+  background-color: var(--main-color-light);
+  color: var(--main-color-dark);
+  cursor: pointer;
+  border: 1px solid var(--main-color-dark);
+}
+
 @media (max-width: 812px) {
   .btnGoPages{
     font-size: 0.6rem;

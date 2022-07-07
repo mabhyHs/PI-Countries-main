@@ -99,6 +99,7 @@ export default function CreateActivity() {
   function handleSubmit(e) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
+      
       if (allActivities.find((act) => act.name === formValues.name))
         return setErrors({ ...errors, name: "This activity already exist" });
       else {
@@ -118,6 +119,7 @@ export default function CreateActivity() {
         });
         history.push("./countries");
       }
+
     } else {
       Swal.fire({
         icon: "error",
