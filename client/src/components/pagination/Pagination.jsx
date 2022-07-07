@@ -18,12 +18,12 @@ export default function Pagination({
   }
   
   if (
-    currentPage > 1 &&
+    currentPage > 1 && 
     currentPage < Math.ceil(allCountries / countriesPerPage)
   ) {
     pageNumbers = pageNumbers.slice(currentPage - 2, currentPage + 1);
   }
-
+  
   if (currentPage === Math.ceil(allCountries / countriesPerPage)) {
     pageNumbers = pageNumbers.slice(currentPage - 2, currentPage);
   }
