@@ -16,7 +16,6 @@ import Loading from "../loading/Loading";
 export default function Home() {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
-
   useEffect(() => {
     dispatch(getAllCountries());
   }, [dispatch]);

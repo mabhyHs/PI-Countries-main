@@ -39,6 +39,25 @@ activities.get("/", async (req, res, next) => {
 }
 );
 
+activities.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const activityToDelete = await Activity.findOne({
+      where: {
+        id: id,
+      },
+    });
+
+    if (!activityToDelete) {
+      return res.status(404).send("Activity not found");
+    }
+    await activityToDelete.destroy();
+    res.send("Activity deleted successfully");
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 
 //ruta delete para eliminar una actividad
 /*activities.delete("/:id", async (req, res, next) => {

@@ -17,14 +17,14 @@ export default function Pagination({
     pageNumbers = pageNumbers.slice(currentPage - 1, currentPage + 1);
   }
   
-  if (
+  if (  //que mantenga de 3en 3 los numeros
     currentPage > 1 && 
     currentPage < Math.ceil(allCountries / countriesPerPage)
   ) {
     pageNumbers = pageNumbers.slice(currentPage - 2, currentPage + 1);
   }
   
-  if (currentPage === Math.ceil(allCountries / countriesPerPage)) {
+  if (currentPage === Math.ceil(allCountries / countriesPerPage)) {//en la ultima pag mantnga los grupos d 3
     pageNumbers = pageNumbers.slice(currentPage - 2, currentPage);
   }
   
