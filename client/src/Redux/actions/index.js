@@ -39,14 +39,15 @@ export function getCountriesByName(name) {
   }
 }
 
-export function getCountryDetails(id) {
+export function getCountryDetails(id, setLoading) {
   return async (dispatch) => {
     try {
       const details = await axios.get(`${URL}/countries/${id}`)
-      return dispatch({
+      dispatch({
         type: GET_COUNTRY_DETAILS,
         payload: details.data,
       })
+     setLoading && setLoading(false)
     } catch (error) {
       console.log(error)
     }
