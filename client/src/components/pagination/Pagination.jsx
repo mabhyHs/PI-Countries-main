@@ -62,7 +62,7 @@ export default function Pagination({
           ))}
       </ul>
       {/* aparecer y desaparecer btn según página */}
-      {currentPage !== Math.ceil(allCountries / countriesPerPage) ? (
+      {currentPage !== Math.ceil(allCountries / countriesPerPage) ? ( //si la página actual es la última página no se muestra el botón
       <button className={styles.arrrowBtn} onClick={() => pagination("next")}>
         &#8250;
       </button>
